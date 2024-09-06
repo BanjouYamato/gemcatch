@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6932484744646376771}
   - component: {fileID: 9109292288356226169}
   - component: {fileID: 8304827945384024589}
-  - component: {fileID: -8199223490717692993}
+  - component: {fileID: 7798957112911967560}
   m_Layer: 0
   m_Name: down2Item
   m_TagString: timePoint
@@ -167,7 +167,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-8199223490717692993
+--- !u!114 &7798957112911967560
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,7 +176,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2975425173042184039}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ac6d68d2e824ee4caaec88e00fdd686, type: 3}
+  m_Script: {fileID: 11500000, guid: 3630f514972660e4a8ad31eb73ab8dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallingSpeed: 6

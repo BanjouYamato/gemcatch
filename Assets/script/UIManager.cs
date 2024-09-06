@@ -2,36 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI scoreTimeText;
+
     public GameObject gameOverPanel;
-    float remainTime;
-    gamePlay gp;
-    // Start is called before the first frame update
-    void Start()
+
+    public TextMeshProUGUI scoreOverText;
+
+    private void Update()
     {
-        remainTime = 30;
-        gp = FindObjectOfType<gamePlay>();
-        StartCoroutine(coolDownTime());
+        SetScoreTimeText();
+        SetGameOverPanel();
+        SetScoreOverText();
+    }
+    void SetScoreTimeText()
+    {
+        scoreTimeText.text = "Score: " + ScoreManager.Instance.Score
+            + " | Time: " + TimeManager.Instance.Timer;
     }
 
-    // Update is called once per frame
-    void Update()
+    void SetGameOverPanel()
     {
-        setScoreText();
-    }
-    void setScoreText()
-    {
-        scoreText.text = "Score: " + gp.myScore + " | Time: " + remainTime;
-    }
-    IEnumerator coolDownTime()
-    {
-        while (remainTime > 0)
+        if (ScoreManager.Instance.GameOver)
         {
-            yield return new WaitForSeconds(1f);
-            remainTime--;
+            gameOverPanel.SetActive(true);
         }
+        else
+        {
+            gameOverPanel.SetActive(false);
+        }
+    }
+
+    void SetScoreOverText()
+    {
+        scoreOverText.text = "Score: " + ScoreManager.Instance.Score;
+    }
+
+    public void ReplayAction()
+    {
+        SceneManager.LoadScene("gemCatcher");
+        ScoreManager.Instance.GameOver = false;
+        ScoreManager.Instance.Score = 0;
+        TimeManager.Instance.Timer = 30;
     }
 }
